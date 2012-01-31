@@ -4,7 +4,13 @@ module WatirDamage
 
       def button name, opts = {}
         define_method "click_#{name}" do
-          @browser.button(:name, "#{name}").when_present.click
+          if opts[:id]
+            button = @browser.button(:id, opts[:id])
+          else
+            button = @browser.button(:name, "#{name}")
+          end
+
+          button.when_present.click
           if(opts[:navigates_to])
             opts[:navigates_to].new @browser
           end
@@ -12,7 +18,13 @@ module WatirDamage
 
         if(opts[:navigates_to])
           define_method "click_#{name}_expecting_failure" do
-            @browser.button(:name, "#{name}").when_present.click
+            if opts[:id]
+              button = @browser.button(:id, opts[:id])
+            else
+              button = @browser.button(:name, "#{name}")
+            end
+            
+            button.when_present.click
             self.class.new @browser
           end
         end

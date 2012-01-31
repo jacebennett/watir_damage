@@ -6,7 +6,7 @@ module WatirDamage
         define_method "#{name}_set?" do
           @browser.checkbox(:name, name.to_s).when_present.value
         end
-        alias_method "#{name}_checked?"
+        alias_method "#{name}_checked?", "#{name}_set?"
 
         define_method "set_#{name}" do
           @browser.checkbox(:name, name.to_s).when_present.set
