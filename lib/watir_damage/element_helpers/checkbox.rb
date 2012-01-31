@@ -18,11 +18,6 @@ module WatirDamage
         end
         alias_method("uncheck_#{name}", "clear_#{name}")
 
-        define_method "toggle_#{name}" do
-          val = @browser.checkbox(:name, name.to_s).when_present.value
-          val ? send ("clear_#{name}".to_sym) : send ("set_#{name}".to_sym)
-        end
-
       end
 
     end
