@@ -6,7 +6,11 @@ Gem::Specification.new do |s|
   s.description = "A little opinion for your watir page objects"
   s.authors     = ["Jace Bennett"]
   s.email       = 'jace.bennett@gmail.com'
-  s.files       = ["lib/watir_damage.rb"]
+  s.files       = Dir[
+      "LICENSE",
+      "readme.md",
+      "lib/**/*.rb"
+  ]
   s.homepage    =
     'http://github.com/bnwasteland/watir_damage'
 end
